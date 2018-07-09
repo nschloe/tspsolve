@@ -15,7 +15,7 @@ def test_tspsolve():
     # xy = yx[[1, 0]]
 
     numpy.random.seed(0)
-    xy = numpy.random.rand(2, 30)
+    xy = numpy.random.rand(2, 10)
 
     # compute distance matrix
     dx = numpy.subtract.outer(xy[0], xy[0])
@@ -23,17 +23,18 @@ def test_tspsolve():
     d = numpy.sqrt(dx ** 2 + dy ** 2)
 
     path = tspsolve.nearest_neighbor(d).tolist()
-    plt.plot(xy[0, path + [path[0]]], xy[1, path + [path[0]]], "-")
-    plt.axis("square")
-    plt.gca().invert_yaxis()
-    plt.show()
+    assert path == [0, 3, 9, 2, 1, 7, 8, 5, 6, 4]
+    # plt.plot(xy[0, path + [path[0]]], xy[1, path + [path[0]]], "-")
+    # plt.axis("square")
+    # plt.gca().invert_yaxis()
+    # plt.show()
 
     path = tspsolve.two_opt(d, path, verbose=True).tolist()
-
-    plt.plot(xy[0, path + [path[0]]], xy[1, path + [path[0]]], "-")
-    plt.axis("square")
-    plt.gca().invert_yaxis()
-    plt.show()
+    assert path == [9, 3, 0, 7, 8, 1, 2, 5, 6, 4]
+    # plt.plot(xy[0, path + [path[0]]], xy[1, path + [path[0]]], "-")
+    # plt.axis("square")
+    # plt.gca().invert_yaxis()
+    # plt.show()
     return
 
 
