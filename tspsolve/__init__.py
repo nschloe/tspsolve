@@ -4,7 +4,7 @@ from __future__ import print_function
 
 from .__about__ import __author__, __email__, __license__, __version__, __status__
 
-from .main import greedy
+from .main import nearest_neighbor, two_opt
 
 __all__ = [
     "__author__",
@@ -12,7 +12,8 @@ __all__ = [
     "__license__",
     "__version__",
     "__status__",
-    "greedy",
+    "nearest_neighbor",
+    "two_opt",
 ]
 
 # try:
