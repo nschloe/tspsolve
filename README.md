@@ -1,13 +1,31 @@
-# python-project-scaffold
+# tspsolve
 
 [![CircleCI](https://img.shields.io/circleci/project/github/nschloe/tspsolve/master.svg)](https://circleci.com/gh/nschloe/tspsolve/tree/master)
 [![codecov](https://img.shields.io/codecov/c/github/nschloe/tspsolve.svg)](https://codecov.io/gh/nschloe/tspsolve)
-[![Codacy grade](https://img.shields.io/codacy/grade/7b33b6a288804ab4b4edd74c896be82a.svg)](https://app.codacy.com/app/nschloe/tspsolve/dashboard)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 [![PyPi Version](https://img.shields.io/pypi/v/tspsolve.svg)](https://pypi.org/project/tspsolve)
 [![GitHub stars](https://img.shields.io/github/stars/nschloe/tspsolve.svg?logo=github&label=Stars)](https://github.com/nschloe/tspsolve)
 
-Some description.
+Algorithms for the [traveling salesman problem
+(TSP)](https://en.wikipedia.org/wiki/Travelling_salesman_problem) in Python.
+
+Implemented so far:
+
+  * Nearest neighbor algorithm
+    ```python
+    import tspsolve
+
+    # Create matrix of distances d
+    path = tspsolve.nearest_neighbor(d)
+    ```
+
+  * [2-opt](https://en.wikipedia.org/wiki/2-opt) improvement
+    ```python
+    import tspsolve
+
+    # Create matrix of distances d and an initial path
+    new_path = tspsolve.two_opt(d, path, verbose=True)
+    ```
 
 ### Installation
 
