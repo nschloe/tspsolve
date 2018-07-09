@@ -27,6 +27,15 @@ Implemented so far:
     new_path = tspsolve.two_opt(d, path, verbose=True)
     ```
 
+For [Euclidiean
+TSP](https://en.wikipedia.org/wiki/Travelling_salesman_problem#Euclidean_TSP), the
+distance matrix can be computed efficiently with
+```python
+dx = numpy.subtract.outer(x, x)
+dy = numpy.subtract.outer(y, y)
+d = numpy.sqrt(dx ** 2 + dy ** 2)
+```
+
 ### Installation
 
 tspsolve is [available from the Python Package
