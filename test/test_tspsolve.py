@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 #
-import matplotlib.pyplot as plt
 import numpy
 
 import tspsolve
@@ -24,6 +23,7 @@ def test_tspsolve():
 
     path = tspsolve.nearest_neighbor(d).tolist()
     assert path == [0, 3, 9, 2, 1, 7, 8, 5, 6, 4]
+    # import matplotlib.pyplot as plt
     # plt.plot(xy[0, path + [path[0]]], xy[1, path + [path[0]]], "-")
     # plt.axis("square")
     # plt.gca().invert_yaxis()
