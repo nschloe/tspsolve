@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 #
 import numpy
-import scipy.sparse
 
 
 def nearest_neighbor(d):
@@ -22,9 +21,11 @@ def nearest_neighbor(d):
     return path
 
 
-def two_opt(d, path):
+def two_opt(d, path, verbose=False):
     """https://en.wikipedia.org/wiki/2-opt
     """
+    path = numpy.array(path)
+
     edges = numpy.stack([path[:-1], path[1:]])
     min_path_cost = numpy.sum(d[tuple(edges)])
     n = d.shape[0]
@@ -32,12 +33,16 @@ def two_opt(d, path):
         found_new = False
         for i in range(n - 1):
             for k in range(i + 2, n + 1):
-                new_path = numpy.concatenate([
-                    path[:i], path[i:k][::-1], path[k:]
-                ])
+                new_path = numpy.concatenate([path[:i], path[i:k][::-1], path[k:]])
                 edges = numpy.stack([new_path[:-1], new_path[1:]])
                 path_cost = numpy.sum(d[tuple(edges)])
                 if path_cost < min_path_cost:
+                    if verbose:
+                        print(
+                            "Found better path ({} > {})".format(
+                                min_path_cost, path_cost
+                            )
+                        )
                     path = new_path
                     min_path_cost = path_cost
                     # Go back to outmost loop
